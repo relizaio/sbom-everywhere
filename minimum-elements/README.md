@@ -29,18 +29,18 @@ Notes from the [report](https://www.cisa.gov/sites/default/files/2026-07/2026_ci
 
 ## Component data mapping
 
-"Same" means the same as the column to its left. Bracketed letters refer to the [additional notes](#additional-notes).
+Every cell is populated with its own value; bracketed letters refer to the [additional notes](#additional-notes).
 
 | Minimum Element | ISO 5962:2021 (SPDX 2.2) | SPDX 2.3 JSON | ISO 5962 DIS (SPDX 3.0) | SPDX 3.1 candidate | CycloneDX 1.5 | ECMA-424v1 (CycloneDX 1.6) | ECMA-424v2 (CycloneDX 1.7) | CycloneDX 2.0 candidate |
 |---|---|---|---|---|---|---|---|---|
-| Component Producer | `packages[].originator` | `packages[].originator` | `Package.originatedBy` | `Package.originatedBy` | `components[].author`; property if needed | `manufacturer.name` or `authors[].name` | Same | `components[].parties[]` [a], [b] |
-| Dependency Relationship | `relationships[]`: `spdxElementId` / `DEPENDS_ON` / `relatedSpdxElement` | Same | `Relationship: dependsOn` | Same | `dependencies[].ref` / `dependsOn[]` | Same | Same | Same |
-| Component Hash Value | `packages[].checksums[].checksumValue` | Same | `Hash.hashValue` | Same | `components[].hashes[].content` | Same | Same | Same [b] |
-| Hash Algorithm | `packages[].checksums[].algorithm` | Same | `Hash.algorithm` | Same | `components[].hashes[].alg` | Same | Same | Same [b] |
-| Component Identifiers | `packages[].externalRefs[]`; `OTHER` for SWID/gitoid | `packages[].externalRefs[]` incl. SWID/gitoid | `packageURL`; `externalIdentifier` (cpe22, cpe23, gitoid, packageUrl, swhid, swid); `contentIdentifier` (gitoid, swhid) | Same | `cpe`, `purl`, `swid`, `omniborId`, `swhid` | Same | Same | `components[].identifiers[]`; for details see [b], [c] |
-| Component License | `packages[].licenseDeclared`; `packages[].licenseConcluded` | Same | `Relationship: hasDeclaredLicense`; `Relationship: hasConcludedLicense` | Same | `components[].licenses[]` | `licenses[]`; `acknowledgement=declared` | Same | Same with more options to express [b], [d] |
-| Component Name | `packages[].name` | Same | `Package.name` | Same | `components[].name` | Same | Same | Same [b] |
-| Component Version | `packages[].versionInfo` | Same | `Package.packageVersion` | `Package.version` | `components[].version` | Same | Same | Same [b] |
+| Component Producer | `packages[].originator` | `packages[].originator` | `Package.originatedBy` | `Package.originatedBy` | `components[].author`; property if needed | `manufacturer.name` or `authors[].name` | `manufacturer.name` or `authors[].name` | `components[].parties[]` [a], [b] |
+| Dependency Relationship | `relationships[]`: `spdxElementId` / `DEPENDS_ON` / `relatedSpdxElement` | `relationships[]`: `spdxElementId` / `DEPENDS_ON` / `relatedSpdxElement` | `Relationship: dependsOn` | `Relationship: dependsOn` | `dependencies[].ref` / `dependsOn[]` | `dependencies[].ref` / `dependsOn[]` | `dependencies[].ref` / `dependsOn[]` | `dependencies[].ref` / `dependsOn[]` |
+| Component Hash Value | `packages[].checksums[].checksumValue` | `packages[].checksums[].checksumValue` | `Hash.hashValue` | `Hash.hashValue` | `components[].hashes[].content` | `components[].hashes[].content` | `components[].hashes[].content` | `components[].hashes[].content` [b] |
+| Hash Algorithm | `packages[].checksums[].algorithm` | `packages[].checksums[].algorithm` | `Hash.algorithm` | `Hash.algorithm` | `components[].hashes[].alg` | `components[].hashes[].alg` | `components[].hashes[].alg` | `components[].hashes[].alg` [b] |
+| Component Identifiers | `packages[].externalRefs[]`; `OTHER` for SWID/gitoid | `packages[].externalRefs[]` incl. SWID/gitoid | `packageURL`; `externalIdentifier` (cpe22, cpe23, gitoid, packageUrl, swhid, swid); `contentIdentifier` (gitoid, swhid) | `packageURL`; `externalIdentifier` (cpe22, cpe23, gitoid, packageUrl, swhid, swid); `contentIdentifier` (gitoid, swhid) | `cpe`, `purl`, `swid`, `omniborId`, `swhid` | `cpe`, `purl`, `swid`, `omniborId`, `swhid` | `cpe`, `purl`, `swid`, `omniborId`, `swhid` | `components[].identifiers[]`; for details see [b], [c] |
+| Component License | `packages[].licenseDeclared`; `packages[].licenseConcluded` | `packages[].licenseDeclared`; `packages[].licenseConcluded` | `Relationship: hasDeclaredLicense`; `Relationship: hasConcludedLicense` | `Relationship: hasDeclaredLicense`; `Relationship: hasConcludedLicense` | `components[].licenses[]` | `licenses[]`; `acknowledgement=declared` | `licenses[]`; `acknowledgement=declared` | `licenses[]`; `acknowledgement=declared`, with more options to express [b], [d] |
+| Component Name | `packages[].name` | `packages[].name` | `Package.name` | `Package.name` | `components[].name` | `components[].name` | `components[].name` | `components[].name` [b] |
+| Component Version | `packages[].versionInfo` | `packages[].versionInfo` | `Package.packageVersion` | `Package.version` | `components[].version` | `components[].version` | `components[].version` | `components[].version` [b] |
 
 ## Metadata field definitions
 
@@ -58,19 +58,19 @@ Notes from the [report](https://www.cisa.gov/sites/default/files/2026-07/2026_ci
 
 ## Metadata mappings
 
-"Same" means the same as the column to its left. Bracketed letters refer to the [additional notes](#additional-notes).
+Every cell is populated with its own value; bracketed letters refer to the [additional notes](#additional-notes).
 
 | Minimum Element | ISO 5962:2021 (SPDX 2.2) | SPDX 2.3 JSON | ISO 5962 DIS (SPDX 3.0 & OMG SPDX 3.0) | SPDX 3.1 candidate | CycloneDX 1.5 | ECMA-424v1 (CycloneDX 1.6) | ECMA-424v2 (CycloneDX 1.7) | CycloneDX 2.0 candidate |
 |---|---|---|---|---|---|---|---|---|
-| SBOM Author | `creationInfo.creators[]` Person/Organization | Same | `creationInfo.createdBy` → `Agent.name` | Same | `metadata.authors[].name`; property for org | `metadata.manufacturer.name` or `authors[].name` | Same | `metadata.parties[]` [a] |
-| Author Signature | External signed envelope | Same | `signature` (JSS) | Same | `signature` (JSF) | `signature` (JSF) | `signature` (JSF) | `signatures` (list of JSS signature objects) |
-| Data Format Name | `spdxVersion = "SPDX-2.2"` (format name: SPDX) | `spdxVersion = "SPDX-2.3"` (format name: SPDX) | `@context` → `https://spdx.org/rdf/[version]/spdx-context.jsonld` | Same | `bomFormat` + media type | Same | Same | `specFormat = "CycloneDX"` + media type |
-| Data Format Version | `spdxVersion = SPDX-2.2` | `spdxVersion = SPDX-2.3` | `creationInfo.specVersion` | Same | `specVersion = 1.5` | `specVersion = 1.6` | `specVersion = 1.7` | `specVersion = 2.0` |
-| Generation Context | `creationInfo.comment` | Same | `software/Sbom.sbomType` | Same | `metadata.lifecycles[].phase` | Same | Same | Same |
-| SBOM Timestamp | `creationInfo.created` | Same | `creationInfo.created` | Same | `metadata.timestamp` | Same | Same | Same |
-| SBOM Tool Name | `creationInfo.creators[]` Tool entry | Same | `createdUsing` → `Tool.name` | Same | `metadata.tools.components[].name` | Same | Same | Same [b] |
-| SBOM Tool Version | Parsed from `creators[]` Tool entry | Same | Tool → versioned Package representing executable [z] | `Tool.version` when exposed; otherwise Tool → versioned Package [z] | `metadata.tools.components[].version` | Same | Same | Same [b] |
-| SBOM Version | `documentNamespace` [y] | Same | `SBOM.spdxId` and optionally Relationship to previous `SBOM.spdxId` | `SBOM.spdxId` and optionally Relationship to previous `SBOM.spdxId`; alternatively `Artifact.version` | `version` + `serialNumber` | Same | Same | Same |
+| SBOM Author | `creationInfo.creators[]` Person/Organization | `creationInfo.creators[]` Person/Organization | `creationInfo.createdBy` → `Agent.name` | `creationInfo.createdBy` → `Agent.name` | `metadata.authors[].name`; property for org | `metadata.manufacturer.name` or `authors[].name` | `metadata.manufacturer.name` or `authors[].name` | `metadata.parties[]` [a] |
+| Author Signature | External signed envelope | External signed envelope | `signature` (JSS) | `signature` (JSS) | `signature` (JSF) | `signature` (JSF) | `signature` (JSF) | `signatures` (list of JSS signature objects) |
+| Data Format Name | `spdxVersion = "SPDX-2.2"` (format name: SPDX) | `spdxVersion = "SPDX-2.3"` (format name: SPDX) | `@context` → `https://spdx.org/rdf/[version]/spdx-context.jsonld` | `@context` → `https://spdx.org/rdf/[version]/spdx-context.jsonld` | `bomFormat` + media type | `bomFormat` + media type | `bomFormat` + media type | `specFormat = "CycloneDX"` + media type |
+| Data Format Version | `spdxVersion = SPDX-2.2` | `spdxVersion = SPDX-2.3` | `creationInfo.specVersion` | `creationInfo.specVersion` | `specVersion = 1.5` | `specVersion = 1.6` | `specVersion = 1.7` | `specVersion = 2.0` |
+| Generation Context | `creationInfo.comment` | `creationInfo.comment` | `software/Sbom.sbomType` | `software/Sbom.sbomType` | `metadata.lifecycles[].phase` | `metadata.lifecycles[].phase` | `metadata.lifecycles[].phase` | `metadata.lifecycles[].phase` |
+| SBOM Timestamp | `creationInfo.created` | `creationInfo.created` | `creationInfo.created` | `creationInfo.created` | `metadata.timestamp` | `metadata.timestamp` | `metadata.timestamp` | `metadata.timestamp` |
+| SBOM Tool Name | `creationInfo.creators[]` Tool entry | `creationInfo.creators[]` Tool entry | `createdUsing` → `Tool.name` | `createdUsing` → `Tool.name` | `metadata.tools.components[].name` | `metadata.tools.components[].name` | `metadata.tools.components[].name` | `metadata.tools.components[].name` [b] |
+| SBOM Tool Version | Parsed from `creators[]` Tool entry | Parsed from `creators[]` Tool entry | Tool → versioned Package representing executable [z] | `Tool.version` when exposed; otherwise Tool → versioned Package [z] | `metadata.tools.components[].version` | `metadata.tools.components[].version` | `metadata.tools.components[].version` | `metadata.tools.components[].version` [b] |
+| SBOM Version | `documentNamespace` [y] | `documentNamespace` [y] | `SBOM.spdxId` and optionally Relationship to previous `SBOM.spdxId` | `SBOM.spdxId` and optionally Relationship to previous `SBOM.spdxId`; alternatively `Artifact.version` | `version` + `serialNumber` | `version` + `serialNumber` | `version` + `serialNumber` | `version` + `serialNumber` |
 
 ## Additional notes
 
